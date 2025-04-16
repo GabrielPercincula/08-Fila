@@ -84,25 +84,34 @@ void insere()
 		return;
 	}
 
-	cout << "Digite o elemento: ";
+
+	cout << "Digite o valor: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-
+	if (inicio == NULL)
+	{
+		inicio = novo;
+		fim = novo;
+	}
+	else
+	{
+		fim->prox = novo;
+		fim = novo;
+	}
 }
 
-void remove() {
-
-	if (inicio) {
-
+	void remove() {
+		if (inicio == NULL)
+		{
+			cout << "Fila vazia \n";
+			return;
+		}
 		NO* paraExcluir = inicio;
+		cout << "Elemento removido: " << paraExcluir->valor << "\n";
 		inicio = inicio->prox;
-
 		free(paraExcluir);
-
-		cout << "Elemento removido da fila \n";
+		if (inicio == NULL) {
+			fim = NULL;
+		}
 	}
-	else {
-		cout << "Fila vazia. \n";
-	}
-}
